@@ -1,2 +1,2 @@
-# Perlin-noise-terrain-generator
-Generate a terrain with OpenGL glBegin() and glEnd()
+# LightSpeed
+Jump to light speed simulator
