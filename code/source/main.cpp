@@ -16,8 +16,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
 
-#define WIDTH  700
-#define HEIGHT  700
+#define WIDTH  600
+#define HEIGHT  600
 
 using namespace sf;
 using namespace TerrainPerlingNoiseGeneration;
@@ -43,6 +43,8 @@ int main()
     // Configuramos el OpenGL
     glDisable(GL_CULL_FACE);
     glDisable(GL_DEPTH_TEST);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
 
     reset_viewport(WIDTH, HEIGHT);
 
@@ -50,8 +52,6 @@ int main()
 
     /* initialize random seed: */
     srand(time(NULL));
-
-
 
     do
     {
@@ -71,7 +71,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
 
         glLoadIdentity();
-        glTranslatef(float(WIDTH / 2), float(HEIGHT / 2), 0.f);
+        glTranslatef(0 + generator.get_scale() / 2, 0 + generator.get_scale() / 2, 0.f);
 
         generator.update(0);
 

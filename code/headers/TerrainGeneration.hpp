@@ -30,9 +30,31 @@ namespace TerrainPerlingNoiseGeneration
 
     private:
 
-        GLuint vertex_list_id;
+        int cols;
+
+        int rows;
+
+        int scale = 40;
+
+        std::vector<GLuint> vertex_list_id;
 
     public:
+
+        TerrainGeneration()
+        {
+            int w = 600;
+            int h = 600;
+
+            cols = w / scale;
+            rows = h / scale;
+        }
+
+        int get_scale()
+        {
+            return scale;
+        }
+
+        void drawRect(float x, float y, float w, float h);
 
         void update(float delta);
 

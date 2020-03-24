@@ -11,49 +11,62 @@
 
 #include "../headers/TerrainGeneration.hpp"
 
+void TerrainPerlingNoiseGeneration::TerrainGeneration::drawRect(float x, float y, float w, float h)
+{
+
+    float w2 = w / 2;
+    float h2 = h / 2;
+
+    glVertex3i(x - w2, y - h2, 1);
+    glVertex3i(x - w2, y + h2, 1);
+    glVertex3i(x + w2, y + h2, 1);
+    glVertex3i(x + w2, y - h2, 1);
+}
+
 void TerrainPerlingNoiseGeneration::TerrainGeneration::update(float delta)
 {
 
+    float radius = 350;
+
     // Se crea una lista y se guarda su identificador:
 
-    vertex_list_id = glGenLists(1);
-
-    // Se compilan los comandos que dibujan el círculo en la lista:
-
-    glNewList(vertex_list_id, GL_COMPILE);
+    for (int x = 0; x < cols; x++)
     {
-        // Se establece el color:
-
-        glColor3ub(255,0,0);
-
-        // Se dibuja el círculo con coordenadas locales de vértices cacheadas:
-
-        glBegin(GL_TRIANGLE_FAN);
+        for (int y = 0; y < rows; y++)
         {
-            // Se añade el primer vértice en el centro:
+            // Se compilan los comandos que dibujan el círculo en la lista:
 
-            glVertex2f(0, 0);
+            vertex_list_id.push_back( glGenLists(1) );
 
-            // Se añaden vértices sobre el borde del círculo:
-
-            for (float angle = 0.f; angle < 6.283185f; angle += 0.1f)
+            glNewList(vertex_list_id[vertex_list_id.size() - 1], GL_COMPILE);
             {
-                glVertex2f(std::cosf(angle) * 10, std::sinf(angle) * 10);
+                // Se establece el color:
+
+                glColor3ub(255, 255, 255);
+
+                // Se dibuja el círculo con coordenadas locales de vértices cacheadas:
+
+                glBegin(GL_TRIANGLE_FAN);
+                {
+                    drawRect(x * scale, y * scale, scale, scale);
+
+                }
+                glEnd();
             }
+            glEndList();
 
-            // Se añade un último vértice de cierre donde angle vale 0
-
-            glVertex2f(10, 0);
         }
-        glEnd();
     }
-    glEndList();
+
+
 
 }
 
 void TerrainPerlingNoiseGeneration::TerrainGeneration::render(sf::RenderWindow& window)
 {
-
-    glCallList(vertex_list_id);
+    for (auto id : vertex_list_id)
+    {
+        glCallList(id);
+    }
 
 }
