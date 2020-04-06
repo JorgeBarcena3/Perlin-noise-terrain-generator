@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="toolkit">
+      <UniqueIdentifier>{ca98fbe4-7fde-4b4f-b22c-829779bf2bd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="toolkit\source">
+      <UniqueIdentifier>{cfbb8155-85d2-4a41-b4bf-310a2d67af2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="toolkit\header">
+      <UniqueIdentifier>{2c799136-1120-4e75-b89f-f57a5d24a111}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers">
+      <UniqueIdentifier>{38c4a35e-54ce-4e31-b795-220ddafb2dea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources">
+      <UniqueIdentifier>{549598b4-6ef0-474b-8c50-ec1e5f8dab4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="toolkit\ExampleShapes">
+      <UniqueIdentifier>{2f88aaed-a5df-4a02-9d5d-cef7f20da812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{e311bd5c-a6d5-47f9-946d-4cc30e0d82e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="targa">
+      <UniqueIdentifier>{eff57c60-a33f-4f55-b343-7690c34ec899}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="toolkit\ExampleShapes\base">
+      <UniqueIdentifier>{09dde16b-79e7-44e0-9c9f-291a728542bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\ExampleShapes">
+      <UniqueIdentifier>{a807a94d-4512-4ff3-a0dd-a25908d7919b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\code\source\main.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Shader.cpp">
+      <Filter>toolkit\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Shader_Program.cpp">
+      <Filter>toolkit\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\View.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\targa\src\targa.c">
+      <Filter>targa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\ExampleShape\Cube.cpp">
+      <Filter>sources\ExampleShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\ExampleShape\Cylinder.cpp">
+      <Filter>sources\ExampleShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\ExampleShape\Malla.cpp">
+      <Filter>sources\ExampleShapes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\code\header\Fragment_Shader.hpp">
+      <Filter>toolkit\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Shader.hpp">
+      <Filter>toolkit\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Shader_Program.hpp">
+      <Filter>toolkit\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Vertex_Shader.hpp">
+      <Filter>toolkit\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Color_Buffer.hpp">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Color_Buffer_Rgba8888.hpp">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\View.hpp">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\targa\include\targa.h">
+      <Filter>targa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\exampleShapes\BaseShape.hpp">
+      <Filter>toolkit\ExampleShapes\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\exampleShapes\Cube.hpp">
+      <Filter>toolkit\ExampleShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\exampleShapes\Cylinder.hpp">
+      <Filter>toolkit\ExampleShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\exampleShapes\Malla.hpp">
+      <Filter>toolkit\ExampleShapes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\assets\fragmentShader.fglsl">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\..\assets\vertexShader.vglsl">
+      <Filter>shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>

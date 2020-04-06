@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL-Texture-Template", "OpenGl-Template.vcxproj", "{C0507E8D-58D6-4CB0-982E-14DF192A6D77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		Description = OpenGL and SFML with targe textures template project
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0507E8D-58D6-4CB0-982E-14DF192A6D77}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C0507E8D-58D6-4CB0-982E-14DF192A6D77}.Debug|Win32.Build.0 = Debug|Win32
+		{C0507E8D-58D6-4CB0-982E-14DF192A6D77}.Release|Win32.ActiveCfg = Release|Win32
+		{C0507E8D-58D6-4CB0-982E-14DF192A6D77}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {71F822AB-D431-48B9-8E82-CE371717B50D}
+	EndGlobalSection
+EndGlobal

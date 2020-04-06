@@ -1,86 +1,79 @@
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
-*                                                                             *
-*  Started by Jorge Bárcena on March of 2020                               *
-*                                                                             *
-*  This is free software released into the public domain.                     *
-*                                                                             *
-*  j.barcenalumbreras@gmail.com                                               *
-*                                                                             *
+ *                                                                             *
+ *  Started by Ángel on march of 2014                                          *
+ *                                                                             *
+ *  This is free software released into the public domain.                     *
+ *                                                                             *
+ *  angel.rodriguez@esne.edu                                                   *
+ *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include "../headers/TerrainGeneration.hpp"
-#include "../headers/Helper.hpp"
-#include <vector>
-#include <stdlib.h>     /* srand, rand */
+#include <cassert>
+#include "../header/View.hpp"
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
-
-#define WIDTH  600
-#define HEIGHT  600
+#include <SFML/System/Time.hpp>
 
 using namespace sf;
-using namespace TerrainPerlingNoiseGeneration;
+using namespace exampleShapes;
 
-void reset_viewport(int width, int height)
+int main ()
 {
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(0, GLdouble(width), 0, GLdouble(height), +1, -1);
-    glViewport(0, 0, width, height);
-    glMatrixMode(GL_MODELVIEW);
-}
 
+    srand(time(NULL));
 
-int main()
-{
-    RenderWindow window(VideoMode(WIDTH, HEIGHT), "LightSpeed - Jorge Barcena", sf::Style::Default, ContextSettings(32));
+    Window window(VideoMode(800, 600), "OpenGL Modern + Shaders + textures", Style::Default, ContextSettings(32));
 
-    window.setVerticalSyncEnabled(true);
+    window.setVerticalSyncEnabled (true);
 
-    TerrainGeneration generator;
+    // Una vez se ha creado el contexto de OpenGL ya se puede inicializar Glew:
 
-    // Configuramos el OpenGL
-    glDisable(GL_CULL_FACE);
-    glDisable(GL_DEPTH_TEST);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    GLenum glew_initialization =  glewInit ();
 
+    assert(glew_initialization == GLEW_OK);
 
-    reset_viewport(WIDTH, HEIGHT);
+    // Una vez se ha inicializado GLEW se puede crear una instancia de View:
+
+    View view(800, 600);
+
+    // Se ejecuta el bucle principal:
 
     bool running = true;
 
-    /* initialize random seed: */
-    srand(time(NULL));
+    sf::Clock clock; // starts the clock
 
     do
     {
-        // Process window events:
-
         Event event;
 
-        while (window.pollEvent(event))
+        while (window.pollEvent (event))
         {
-            if (event.type == Event::Closed)
+            switch (event.type)
             {
-                running = false;
-            }
+                case Event::Closed:
+                {
+                    running = false;
+                    break;
+                }
 
+                case Event::Resized:
+                {
+                    Vector2u window_size = window.getSize ();
+
+                    view.resize (window_size.x, window_size.y);
+
+                    break;
+                }
+            }
         }
 
-        glClear(GL_COLOR_BUFFER_BIT);
+        view.update (clock.getElapsedTime().asSeconds());
+        view.render ();
 
-        glLoadIdentity();
-        glTranslatef(0 + generator.get_scale() / 2, 0 + generator.get_scale() / 2, 0.f);
+        window.display ();
+    }
+    while (running);
 
-        generator.update(0);
-
-        generator.render(window);        
-
-        window.display();
-
-    } while (running);
-
-
-    return EXIT_SUCCESS;
+    return (EXIT_SUCCESS);
 }

@@ -1,2 +1,1 @@
-# LightSpeed
-Jump to light speed simulator
+# OpenGL-Shaders-template
